@@ -28,16 +28,16 @@ window.features = {
     questionSpoof: true,
     videoSpoof: true,
     showAnswers: false,
-    autoAnswer: false,
+    autoAnswer: true,
     customBanner: false,
     nextRecomendation: false,
     repeatQuestion: false,
     minuteFarmer: false,
-    rgbLogo: false
+    rgbLogo: true
 };
 window.featureConfigs = {
-    autoAnswerDelay: 3,
-    customUsername: "",
+    autoAnswerDelay: 1,
+    customUsername: "lula",
     customPfp: ""
 };
 
@@ -247,7 +247,7 @@ function setupMenu() {
 /* Main Functions */ 
 function setupMain(){
     function spoofQuestion() {
-        const phrases = [ "🔥 Get good, get [Khanware](https://github.com/Niximkk/khanware/)!", "🤍 Made by [@im.nix](https://e-z.bio/sounix).", "☄️ By github.com/Niximkk/khanware/ " ];
+        const phrases = [ "oque é o homem? uma pilha miseravel de segredos", "🤍 Made by [@im.nix](https://e-z.bio/sounix). modified by [patu](https://github.com/usedhost/)", "👆 FAZUELI" ];
         const originalFetch = window.fetch;
         window.fetch = async function (input, init) {
             let body;
@@ -263,7 +263,7 @@ function setupMain(){
                     if(itemData.question.content[0] === itemData.question.content[0].toUpperCase()){
                         itemData.answerArea = { "calculator": false, "chi2Table": false, "periodicTable": false, "tTable": false, "zTable": false }
                         itemData.question.content = phrases[Math.floor(Math.random() * phrases.length)] + `[[☃ radio 1]]`;
-                        itemData.question.widgets = { "radio 1": { options: { choices: [ { content: "Resposta correta.", correct: true }, { content: "Resposta incorreta.", correct: false } ] } } };
+                        itemData.question.widgets = { "radio 1": { options: { choices: [ { content: "Se quiser sim, Mano.", correct: true }, { content: "Se quiser não, Mano.", correct: false } ] } } };
                         responseObj.data.assessmentItem.item.itemData = JSON.stringify(itemData);
                         sendToast("🔓 Questão exploitada.", 1000);
                         return new Response(JSON.stringify(responseObj), { status: originalResponse.status, statusText: originalResponse.statusText, headers: originalResponse.headers });
