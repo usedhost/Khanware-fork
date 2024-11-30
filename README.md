@@ -1,3 +1,5 @@
+
+this is a fork of khanware with some funny changes
 # 🌿 Khanware
 ### The most advanced Khan Academy cheat.
 
